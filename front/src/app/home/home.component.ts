@@ -10,13 +10,13 @@ import { GreetingService } from '../greeting.service';
   template:`
     <section>
       <form>
-        <input type="text" placeholder="Filter by message" />
-        <button class="primary" type="button">Search</button>
+        <input type="text" placeholder="Filter by greeting content" #filter/>
+        <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
       </form>
     </section>
     <section class="results">
       <app-greeting-instance
-      *ngFor="let greetingInstance of greetingInstanceList"
+      *ngFor="let greetingInstance of filteredGreetingList"
        [greetingInstance]="greetingInstance"></app-greeting-instance>
     </section>
   `,
@@ -27,10 +27,25 @@ export class HomeComponent {
 
   greetingInstanceList: GreetingInstance[] = [];
   greetingService: GreetingService = inject(GreetingService);
+  filteredGreetingList: GreetingInstance[] = [];
 
   constructor() {
-    this.greetingInstanceList = this.greetingService.getAllGreetingInstances();
+
+    this.greetingService.getAllGreetingInstances().then((greetingInstanceList: GreetingInstance[]) => {
+      this.greetingInstanceList = greetingInstanceList;
+      this.filteredGreetingList = greetingInstanceList;
+    });
   }
 
+  filterResults(text: string) {
+    if(!text) {
+      this.filteredGreetingList = this.greetingInstanceList;
+      return;
+    }
+
+    this.filteredGreetingList = this.greetingInstanceList.filter((greetingInstance) =>
+      greetingInstance?.content.toLowerCase().includes(text.toLowerCase()),
+  );
+  }
 
 }

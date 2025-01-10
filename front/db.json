@@ -1,0 +1,24 @@
+{
+    "greetings": [
+        {
+            "id": 1,
+            "content": "allo wurlld"
+        },
+        {
+            "id": 2,
+            "content": "allo OSS"
+        },
+        {
+            "id": 3,
+            "content": "Hello world"
+        },
+        {
+            "id": 4,
+            "content": "hello there"
+        },
+        {
+            "id": 5,
+            "content": "morning"
+        }
+    ]
+}
