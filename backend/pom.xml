@@ -68,6 +68,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<executable>true</executable>
+					<classifier>exec</classifier>
+					<mainClass>com.wphero.greeting.GreetingApplication</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

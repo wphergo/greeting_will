@@ -6,7 +6,7 @@ import { GreetingInstance } from './greeting-instance';
 })
 export class GreetingService {
 
-  url = "http://localhost:3000/greetings";
+  url = "http://localhost:8080/greeting";
 
   // greetingInstanceList: GreetingInstance[] = [
   //   {
@@ -41,6 +41,13 @@ export class GreetingService {
   async getGreetingInstanceById(id: number): Promise<GreetingInstance | undefined> {
     const data = await fetch(`${this.url}/${id}`);
     return (await data.json()) ?? {};
+  }
+
+  async submitCreationForm(content: string) {
+    const data = await fetch(this.url, {
+      method: "POST",
+      body: content
+    });
   }
 
   submitApplication(firstName: string, lastName: string, email: string) {

@@ -32,7 +32,7 @@ public class GreetingController {
 	}
 
 	@PostMapping
-	public Greeting createGreeting(@RequestBody Greeting greeting) {
-		return greetingBO.createGreeting(greeting);
+	public Greeting createGreeting(@RequestBody String content) {
+		return greetingBO.createGreeting(content);
 	}
 }

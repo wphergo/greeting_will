@@ -3,11 +3,16 @@ import { CommonModule } from '@angular/common';
 import { GreetingInstanceComponent } from '../greeting-instance/greeting-instance.component';
 import { GreetingInstance } from '../greeting-instance';
 import { GreetingService } from '../greeting.service';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, GreetingInstanceComponent],
+  imports: [CommonModule, GreetingInstanceComponent, RouterModule],
   template:`
+    <section>
+    <a [routerLink]="['/creation']">Create a greeting</a>
+    </section>
     <section>
       <form>
         <input type="text" placeholder="Filter by greeting content" #filter/>

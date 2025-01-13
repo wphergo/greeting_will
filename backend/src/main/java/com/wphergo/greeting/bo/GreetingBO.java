@@ -24,7 +24,9 @@ public class GreetingBO {
         return greetingRepository.findAll();
     }
 
-    public Greeting createGreeting(Greeting greeting) {
+    public Greeting createGreeting(String content) {
+        Greeting greeting = new Greeting();
+        greeting.setContent(content);
         return greetingRepository.save(greeting);
     }
 }
